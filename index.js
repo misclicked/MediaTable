@@ -8,10 +8,11 @@ Magic = mmm.Magic;
 var argv = require('minimist')(process.argv.slice(2));
 let width = 'w' in argv ? argv.w : 200;
 let height = 'h' in argv ? argv.h : 0;
-let fps = 'fps' in argv ? argv.fps : 15;
-let frames = 'x' in argv ? argv.x : 100;
+let fps = 'fps' in argv ? argv.fps : 1;
+let frames = 'x' in argv ? argv.x : 1;
 let compress = 'compress' in argv ? true : false;
 let baha = 'baha' in argv ? true : false;
+let noplay = 'noplay' in argv ? true : false;
 if(baha){
     fps = 1;
     frames = 1;
@@ -58,8 +59,12 @@ let main = async ()=>{
                     Jimp.read("./frames/frame-" + (filename+1) +".jpg").then(image=>{
                         if(baha)
                             tables[filename] = `<table>`
-                        else
-                            tables[filename] = `<table style='display:none' id='` + filename + `' width=70% height=70% cellspacing=0 cellpadding=0>`
+                        else{
+                            if(filename==0)
+                                tables[filename] = `<table style='' id='` + filename + `' width=70% cellspacing=0 cellpadding=0>`
+                            else
+                                tables[filename] = `<table style='display:none' id='` + filename + `' width=70% cellspacing=0 cellpadding=0>`
+                        }
                         console.log(filename);
                         height = height ? height : Math.round(width*image.getHeight()/image.getWidth());
                         image.resize(width, height);
@@ -92,6 +97,7 @@ let main = async ()=>{
             }
             else{
                 payload += tables.join('');
+                if(!noplay)
                 payload += `
                 <script>
                     window.onload = ()=>{
