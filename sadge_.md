@@ -1,7 +1,5 @@
-
-                    ---
-                    title: sadge
-                    layout: template
-                    filename: sadge
-                    --- 
-                    
+---
+title: sadge
+layout: template
+filename: sadge
+--- 
