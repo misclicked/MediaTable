@@ -13,6 +13,7 @@ let frames = 'x' in argv ? argv.x : 1;
 let compress = 'compress' in argv ? true : false;
 let baha = 'baha' in argv ? true : false;
 let noplay = 'noplay' in argv ? true : false;
+let fordemo = 'demo' in argv ? true : false;
 if(baha){
     fps = 1;
     frames = 1;
@@ -112,7 +113,18 @@ let main = async ()=>{
                     };
                     </script>
                 `;
-                fs.writeFileSync('index.html', payload);
+                if(fordemo){
+                    console.log(argv)
+                    fs.writeFileSync(argv.demo + '.html', payload);
+                    fs.writeFileSync(argv.demo + '_.md', 
+`---
+title: `+argv.demo+`
+layout: template
+filename: `+argv.demo+`
+--- `);
+                }
+                else
+                    fs.writeFileSync('index.html', payload);
             }
         });
     });
