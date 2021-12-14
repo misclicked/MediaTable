@@ -57,16 +57,18 @@ let main = async ()=>{
             await new Promise((resolve, reject)=>{
                 if(fs.existsSync("./frames/frame-" + (filename+1) +".jpg"))
                     Jimp.read("./frames/frame-" + (filename+1) +".jpg").then(image=>{
+                        height = height ? height : Math.round(width*image.getHeight()/image.getWidth());
+                        let widthPercent = 35;
+                        let heightPercent = Math.round(widthPercent*height/width) * (1920/1080);
                         if(baha)
                             tables[filename] = `<table>`
                         else{
                             if(filename==0)
-                                tables[filename] = `<table style='' id='` + filename + `' width=70% cellspacing=0 cellpadding=0>`
+                                tables[filename] = `<table style='' id='` + filename + `' width=` + widthPercent +`% height=` + heightPercent +`% cellspacing=0 cellpadding=0>`
                             else
-                                tables[filename] = `<table style='display:none' id='` + filename + `' width=70% cellspacing=0 cellpadding=0>`
+                                tables[filename] = `<table style='display:none' id='` + filename + `' width=`+ widthPercent +`% height=`+heightPercent+`% cellspacing=0 cellpadding=0>`
                         }
                         console.log(filename);
-                        height = height ? height : Math.round(width*image.getHeight()/image.getWidth());
                         image.resize(width, height);
                         console.log(width + ' ' + height);
                         for(let i=0;i<height;i++){
@@ -110,7 +112,7 @@ let main = async ()=>{
                     };
                     </script>
                 `;
-                fs.writeFileSync('output.html', payload);
+                fs.writeFileSync('index.html', payload);
             }
         });
     });
