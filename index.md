@@ -1,6 +1,6 @@
 ---
-title: MediaTable demo!
+title: index
 layout: template
 filename: index
 --- 
-# hehe
+# HEHE
