@@ -1,5 +1,4 @@
 /node_modules
 /frames
 *input*
-output.txt
-output.html
+*output*
