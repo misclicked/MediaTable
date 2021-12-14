@@ -1,0 +1,21 @@
+{
+  "name": "baha-trace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "ts-node index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "closest-css-color": "^1.0.0",
+    "ffmpeg-extract-frames": "^2.0.2",
+    "http": "^0.0.1-security",
+    "jimp": "^0.16.1",
+    "p-queue": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.11"
+  }
+}
