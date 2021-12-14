@@ -13,6 +13,8 @@
     "ffmpeg-extract-frames": "^2.0.2",
     "http": "^0.0.1-security",
     "jimp": "^0.16.1",
+    "minimist": "^1.2.5",
+    "mmmagic": "^0.5.3",
     "p-queue": "^7.1.0"
   },
   "devDependencies": {
